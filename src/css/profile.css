@@ -10,7 +10,7 @@
     height: 100vh;
     /* font-size: calc(2px + 1vh); */
     font-size: 0.5rem;
-    background: rgb(0,0,0);
+    /* background: rgb(0,0,0); */
     color: blue;
     position: fixed;
 }
