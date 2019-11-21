@@ -1,0 +1,41 @@
+
+#board_warpper{
+    width: 70%;
+    /* margin: 0 auto; */
+    padding-top: 24rem;
+    min-height: 100vh;
+    position: relative;
+    top: 0;
+    left: 20%;
+    background-attachment: fixed;
+    background-image: url('../image/admin.png');
+    background-repeat: none;
+}
+.textArea{
+    position: fixed;
+    top: 6rem; 
+    width: 68%;
+    left: 21%;
+    z-index: 10;
+}
+
+.leftbar{
+    height: 100vh;
+    width: 18%;
+    background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.leftbar > #navitem > ul >li{
+   list-style-type: none;
+   line-height: 2rem;
+    color: blue;
+}
+.leftbar > #navitem > ul > li:hover{
+    cursor: pointer;
+}
