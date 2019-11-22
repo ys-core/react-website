@@ -5,9 +5,12 @@
     border: 0;
 }
 
+.container{
+    height: 100vh;
+}
 h1{
     font-weight: 300;
-    margin-top: 6vh;
+    padding-top: 6vh;
     padding-left: 6vw;
     /* color: coral; */
 }

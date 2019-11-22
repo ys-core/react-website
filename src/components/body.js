@@ -1,12 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { Link , withRouter } from 'react-router-dom'
-import $ from 'jquery'
 import axios from 'axios'
-
 import '../css/body.css'
 
 import store from '../redux/redux.js'
-
 
 import { Pagination, Typography, Col, Row, Popconfirm, Divider, Modal, Badge } from 'antd'
 import 'antd/dist/antd.css'
@@ -28,7 +25,7 @@ class ArticleItem extends Component{
                <div style={{border:'2px solid white', marginBottom:'1rem'}} >
                    <Row> 
                        <Col span={20} offset={1}>
-                           <Title level={3}>{article.articleTitle}</Title>
+                           <Title level={3} style={{"marginLeft":"0.5em"}}>{article.articleTitle}</Title>
                            <Text type="primary"  className="article_property" style={{"marginLeft":"2em","marginBottom":"2em","fontSize":"0.65rem"}} >author: {article.author}</Text>
                            <Text type="primary" className="article_property" style={{"marginLeft":"2em","marginBottom":"2em","fontSize":"0.65rem"}} >createDate: {article.createDate.substring(0,10).replace(/-/g,"/")}</Text>
                            <Text type="secondary" className="article_property" style={{"marginLeft":"2em","marginBottom":"2em","fontSize":"0.65rem"}} >category: {article.articleType || 'Null'}</Text><br/>
@@ -127,25 +124,10 @@ class Body extends Component{
     }
     handleClickAvatarEvent(){
         if(!this.state.login_status){
-            this.props.history.push("/administrator")
+            this.props.history.push("/account/login")
         }else{
-            // handle the layout event
-            // confirm({
-            //     title: 'Do you Want to delete these items?',
-            //     content: 'Some descriptions',
-            //     onOk() {
-            //       console.log('OK');
-            //       this.setState({
-            //           login_status: false,
-            //           login_user: null
-            //       })
-            //       window.sessionStorage.setItem("login_status",false)      
-            //       window.sessionStorage.setItem("login_user",null) 
-            //     },
-            //     onCancel() {
-            //       console.log('cancel logout.');
-            //     },
-            // });
+           // administrator/user management center
+
         }
     }
 
@@ -155,21 +137,7 @@ class Body extends Component{
             currenetPage: page,
         })
     }
-    commonHandleHover(){
-        $('.default_homepage').css({"color":"black","border-bottom":"0px solid tomato"})
-    }
-    commonHandleLeave(){
-        $('.default_homepage').css({"color":"red","border-bottom":"2px solid tomato"})
-    }
-    render(){
-        // const co ={
-        //     title: "Nodejs Configuration",
-        //     key: '2019_128',
-        //     editTime: "24/08/2019",
-        //     category: 'JavaScript',
-        //     content: "学校源于1902年创建的三江师范学堂，历经国立中央大学、南京大学等发展时期；1952年由原南京大学、复旦大学、武汉大学、浙江大学、江南大学的有关系科组建南京工学院（现东南大学）食品工业系，1958年该系整建制东迁无锡，建立无锡轻工业学院，1995年更名为无锡轻工大学；2001年1月，经教育部批准，无锡轻工大学、江南学院、无锡教育学院合并组建江南大学；2003年，东华大学无锡校区并入江南大学。Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team."
-        // }
-        
+    render(){        
         return(
            <div className="body_container">
                <div className="avatar"><img  src={this.state.avatar_color} onClick={this.handleClickAvatarEvent.bind(this)} alt=""/></div>
@@ -177,20 +145,22 @@ class Body extends Component{
                     <div className="header">
                         <div className="category_bar">
                           <ul>
-                            <li className="default_homepage"><Link to="/" style={{textDecoration:'none'}}>HOMEPAGE</Link></li>
-                            <li className="common_router" onMouseOut={()=>{this.commonHandleLeave()}} onMouseOver={()=>this.commonHandleHover()}><Link to="/blog" style={{textDecoration:'none'}}>BLOG</Link></li>
-                            <li className="common_router" onMouseOut={()=>{this.commonHandleLeave()}} onMouseOver={()=>this.commonHandleHover()}><Link to="/article" style={{textDecoration:'none'}}>ARTICLE</Link></li>
-                            <li className="common_router" onMouseOut={()=>{this.commonHandleLeave()}} onMouseOver={()=>this.commonHandleHover()}><Link to="/board" style={{textDecoration:'none'}}>BOARD</Link></li>
-                            <li className="common_router" onMouseOut={()=>{this.commonHandleLeave()}} onMouseEnter={()=>this.commonHandleHover()}><Link to="/test" style={{textDecoration:'none'}}>CENTER</Link></li>
-                            <li className="common_router" onMouseOut={()=>{this.commonHandleLeave()}} onMouseOver={()=>this.commonHandleHover()}><Link to="/administrator" style={{textDecoration:'none'}}>MORE..</Link></li>
+                            <li className="default_homepage"><Link to="/"  style={{'color':'black'}}>HOMEPAGE</Link></li>
+                            <li className="common_router" ><Link to="/blog"  style={{'color':'black'}}>BLOG</Link></li>
+                            <li className="common_router" ><Link to="/article"  style={{'color':'black'}}>ARTICLE</Link></li>
+                            <li className="common_router" ><Link to="/board"  style={{'color':'black'}}>BOARD</Link></li>
+                            <li className="common_router" ><Link to="/life"  style={{'color':'black'}}>LIFE</Link></li>
+                            <li className="common_router" ><Link to="/account/login"  style={{'color':'black'}}>MORE..</Link></li>
                          </ul>
                         </div>
                     </div>
                </div>
-               <div className="content_container animated bounceInUp">
+               {/* <div className="video animated fadeIn"></div> */}
+               <div className="content_container animated fadeIn">
                     <ContentTemplate content={this.state.articles} />
+                    <Pagination size="small" simple current={this.state.currenetPage} onChange={this.pageChange.bind(this)} total={this.state.article_num} showQuickJumper />
                </div>
-               <Pagination size="small" simple current={this.state.currenetPage} onChange={this.pageChange.bind(this)} total={this.state.article_num} showQuickJumper />
+               
                <br />
            </div>
         )

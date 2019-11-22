@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-import { Typography, Col, Row, Affix, Button, Divider, Layout } from 'antd'
+import { Typography, Col, Row, Button, Divider, Layout } from 'antd'
 import 'antd/dist/antd.css'
 import '../css/articleContent.css'
 
 import CommentPanel from './comment'
 
+import FooterNamePlate from './Footer'
 
 const { Text, Title} = Typography
-const { Content } = Layout
+const { Sider,Content } = Layout
 
 
 
@@ -20,7 +21,8 @@ class ArticleContent extends Component{
             _id: props.match.params.index,
             views: this.props.location.state.views,
             article: {},
-            top: 650
+            top: 650,
+            loading_footer: false
         }
     }
     componentDidMount(){
@@ -30,7 +32,8 @@ class ArticleContent extends Component{
         console.log(res.data)    
         console.log(res.data.article)
             this.setState({
-                article: res.data.article
+                article: res.data.article,
+                loading_footer: true
             })
         }).catch(err => {
             console.log(err)
@@ -44,17 +47,16 @@ class ArticleContent extends Component{
         const { articleTitle,articleType,content,author,createDate,starsNum,views } = this.state.article
         return(
         <Layout>
-            <Content style={{ padding: '0 50px', background: '#fff', marginTop: '2rem',minHeight: 380 }}>
+        <Sider></Sider>
+        <Layout>
+            <Content style={{ marginRight: '50px', marginLeft: '2%', background: '#fff', marginTop: '2rem',minHeight: 380 }}>
             <div className="article_warpper">
             {/* {this.props.match.params.index} {this.props.location.state.views} */}
-                <Affix offsetTop={this.state.top}>
-                    <Button type="primary" onClick={() => this.back()}> Return</Button>
-                </Affix>
                 <Row>
-                    <Col span={22} offset={2}>
+                    <Col span={22} offset={1}>
                             <Title style={{paddingTop:'3rem',paddingBottom:'2rem'}} level={2}>{ articleTitle }</Title>
                             <Divider dashed orientation="left">
-                            <Text mark style={{marginLeft:'1rem',background:'red',fontSize:'0.7rem'}}>Publisher: {author}</Text>
+                            <Text style={{marginLeft:'1rem',fontSize:'0.7rem'}}>Publisher: {author}</Text>
                             <Text style={{marginLeft:'0.5rem',fontSize:'0.7rem'}}>Date: {createDate}</Text>
                             <Text style={{marginLeft:'1rem',fontSize:'0.7rem'}}>Views: {views || 0}</Text>
                             </Divider>
@@ -63,10 +65,14 @@ class ArticleContent extends Component{
                             </div> 
                             <Divider></Divider>
                             <CommentPanel />
+                            <Divider></Divider>
+                           
                     </Col> 
                 </Row>
             </div>
             </Content>
+            { this.state.loading_footer && <FooterNamePlate />}
+        </Layout>
         </Layout>
         )
     }

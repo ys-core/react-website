@@ -1,14 +1,11 @@
 .article_warpper{
-    width: 80vw;
     margin: 0 auto;
-    margin-top: 2rem;
-    padding: 24;
+    /* margin-top: 2rem; */
 }
 .article_content{
-    /* background:  rgba(208, 208, 211,0.2); */
+    /* background:  rgba(208, 208, 211,0.9); */
     margin-top: 2rem;
     overflow: auto;
     margin-bottom: 6rem;
-    /* min-height: 80rem; */
 }
 

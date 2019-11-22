@@ -5,6 +5,8 @@ import axios from 'axios'
 import '../css/blog.css'
 import { List, Card, Avatar, Icon, Divider, Layout, Menu, Empty } from 'antd'
 
+import FooterNamePlate from './Footer'
+
 const { Header, Sider, Content, Footer } = Layout;
 const articleType = ['Javascript','React','Vuejs','Angular','Nodejs','Flutter','Css','Other']
 
@@ -29,22 +31,46 @@ class Blog extends Component{
             selectType: 0,
             selectedKeys: '1',
             showNoData: true,
-            articles: []
+            articles: [],
+            loading_footer: false
         }
     }
+    componentDidMount(){
+        this.setState({
+            selectedKeys: '1'
+       })       
+       // get the article type   articleType[e.key-1]
+       axios.get('http://localhost:8088/getArticles/'+ articleType[0],{params:{type:articleType[0],typeArr:articleType}}).then(res => {
+           if(res.data.status && res.data.articles.length > 0){
+                this.setState({
+                    showNoData: false,
+                    articles: res.data.articles,
+                    loading_footer: true
+                })
+               console.log(res.data.articles)
+               
+           }else{
+               this.setState({
+                   showNoData: true,
+                   loading_footer: true
+                })
+           }
+       }).catch(err => {
+           console.log(err)
+       })
+    }
+
     switchArticleType(e){
        this.setState({
             selectedKeys: e.key
-       })
-       //allocate url router for each type
-       
+       })       
        // get the article type   articleType[e.key-1]
        axios.get('http://localhost:8088/getArticles/'+ articleType[e.key-1],{params:{type:articleType[e.key-1],typeArr:articleType}}).then(res => {
            if(res.data.status && res.data.articles.length > 0){
-                const { articles } = this.state
                 this.setState({
                     showNoData: false,
-                    articles: res.data.articles
+                    articles: res.data.articles,
+                    loading_footer: true
                 })
                console.log(res.data.articles)
                
@@ -108,7 +134,7 @@ class Blog extends Component{
                         {showNoData ? <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} /> : <ArticleList articles={this.state.articles} /> }
                         </div>
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>yongsonglee ©2019-{new Date().getFullYear()} Created by React</Footer>
+                    { this.state.loading_footer && <FooterNamePlate />}
                     </Layout>
                 </Layout>
             </Fragment>

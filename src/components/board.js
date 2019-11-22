@@ -1,13 +1,15 @@
-
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Comment, Icon, Tooltip, Avatar, Input, Layout ,Button, Popconfirm, message } from 'antd';
+import { Comment, Icon, Tooltip, Avatar, Input, Button, Popconfirm, message } from 'antd';
 import moment from 'moment';
 
 import '../css/board.css'
+
+import FooterNamePlate from './Footer'
+
 const { TextArea } = Input
-const { Footer } = Layout
+
 
 class LeftBar extends Component{
     constructor(props){
@@ -18,12 +20,12 @@ class LeftBar extends Component{
             <div className="leftbar">
                 <div id="navitem">
                 <ul>
-                    <li><Link to="/">主页</Link></li>
-                    <li><Link to="/blog">博客</Link></li>
-                    <li><Link to="article">文章</Link></li>
-                    <li><Link to="/board">留言</Link></li>
-                    <li><Link to="more">更多</Link></li>
-                    <li><Link to="/">返回</Link></li>
+                    <li ><Link to="/" style={{'color':'white'}}>主页</Link></li>
+                    <li><Link to="/blog" style={{'color':'white'}}>博客</Link></li>
+                    <li><Link to="article" style={{'color':'white'}}>文章</Link></li>
+                    <li><Link to="/board" style={{'color':'white'}}>留言</Link></li>
+                    <li><Link to="/login" style={{'color':'white'}}>更多</Link></li>
+                    <li><Link to="/" style={{'color':'white'}}>返回</Link></li>
                 </ul>
                 </div>
             </div>
@@ -107,7 +109,7 @@ class CommentItem extends Component{
         const { comment, username, avatar,commentDate} = this.props.comment
         const formatDate = commentDate.replace('T',' ').substring(0,19)
         return (
-        <Comment actions={actions} author={<a>{username}</a>} avatar={ <Avatar src="" alt="匿名" /> }
+        <Comment actions={actions} author={<a>{username + ' ' + (this.props.storey + 1) + '楼'}</a>} avatar={ <Avatar src="" alt="匿名" /> }
           className="comments"
             content={
               <p>
@@ -133,7 +135,8 @@ class Board extends Component{
         this.state={
             username: login_user || null,
             comment: "既然来过, 那么就留下你的脚印呗...",
-            allcomments: []
+            allcomments: [],
+            loading_footer: false
         }
     }
     componentWillUnmount(){
@@ -148,12 +151,14 @@ class Board extends Component{
             if(res.status === 200 && res.data.status === 'true'){
               // console.log(res.data.comments)
               this.setState({
-                allcomments : res.data.comments
+                allcomments : res.data.comments,
+                loading_footer : true
               })
             }
         }).catch(err => {
             console.log(err)
         })
+
         
     }
     handleInputEvent = e => {
@@ -259,12 +264,10 @@ class Board extends Component{
                
                 <div className="comment">
                 {allcomments.map((item,index) => {
-                        return <CommentItem comment={item} key={index} />
+                        return <CommentItem comment={item} key={index} storey={index}/>
                 })}
                 </div>
-                <Layout>
-                  <Footer style={{ textAlign: 'center' }}>yongsonglee ©2019-{new Date().getFullYear()} Created by React</Footer>
-                </Layout>
+                { this.state.loading_footer && <FooterNamePlate />}
            </div>
         )
     }

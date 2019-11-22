@@ -108,7 +108,6 @@ router.post('/verify_user',(req,res)=>{
 			res.send(err);
 		}
 		else{
-	
 			let md5 = crypto.createHash("md5");
 			let newCryptoedPassword = md5.update(req.body.password).digest("hex");
 			console.log(data.length);
@@ -120,7 +119,6 @@ router.post('/verify_user',(req,res)=>{
 						break;   // when i=data.length-1 and then break,i would not execute ++
 					}
 				}
-
 				if(i < data.length){
 					res.send({status:'true',tag:data[i].tag,username:data[i].username})        //common user's username and password matched
 				}else{
