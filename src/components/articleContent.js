@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import { Link } from 'react-router-dom'
 import { Typography, Col, Row, Button, Divider, Layout } from 'antd'
 import 'antd/dist/antd.css'
 import '../css/articleContent.css'
@@ -47,7 +47,17 @@ class ArticleContent extends Component{
         const { articleTitle,articleType,content,author,createDate,starsNum,views } = this.state.article
         return(
         <Layout>
-        <Sider></Sider>
+        <Sider>
+            <div id="navitem">
+                    <ul>
+                        <li ><Link to="/" style={{'color':'white'}}>主页</Link></li>
+                        <li><Link to="/blog" style={{'color':'white'}}>博客</Link></li>
+                        <li><Link to="/board" style={{'color':'white'}}>留言</Link></li>
+                        <li><Link to="/life" style={{'color':'white'}}>生活</Link></li>
+                        <li><Link to="/" style={{'color':'white'}}>返回</Link></li>
+                    </ul>
+                    </div>
+            </Sider>
         <Layout>
             <Content style={{ marginRight: '50px', marginLeft: '2%', background: '#fff', marginTop: '2rem',minHeight: 380 }}>
             <div className="article_warpper">

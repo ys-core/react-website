@@ -74,7 +74,8 @@ class Body extends Component{
             login_status: JSON.parse(login_status),
             logoff_window: false,
             login_user: login_user,
-            avatar_color: login_status ? require('../image/avatar-on.png') : require('../image/avatar-off.png')
+            avatar_color: login_status ? require('../image/avatar-on.png') : require('../image/avatar-off.png'),
+            pagination_dispaly: false
         }
     }
     componentDidMount(){
@@ -85,7 +86,8 @@ class Body extends Component{
             // console.log(res.data.allArticles.length)
             this.setState({
                 article_num: res.data.allArticles.length,
-                articles: [...res.data.allArticles]
+                articles: [...res.data.allArticles],
+                pagination_dispaly: true
             })
             
         }).catch(err => {
@@ -155,10 +157,10 @@ class Body extends Component{
                         </div>
                     </div>
                </div>
-               {/* <div className="video animated fadeIn"></div> */}
-               <div className="content_container animated fadeIn">
-                    <ContentTemplate content={this.state.articles} />
-                    <Pagination size="small" simple current={this.state.currenetPage} onChange={this.pageChange.bind(this)} total={this.state.article_num} showQuickJumper />
+               <div className="content_container animated slideInUp">
+                    <ContentTemplate content={this.state.articles} /> 
+                    { this.state.pagination_dispaly && <Pagination size="small" simple current={this.state.currenetPage} onChange={this.pageChange.bind(this)} total={this.state.article_num} showQuickJumper />     }
+ 
                </div>
                
                <br />

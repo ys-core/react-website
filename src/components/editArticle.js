@@ -109,7 +109,7 @@ class EditArticle extends Component{
         const { editorState } = this.state
         return(
             <Layout>
-                <Sider className="article_sider" width="18%" theme="light">
+                <Sider className="article_sider" width="13%" theme="light">
                     <Menu onClick={this.handleClick} defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']}  mode="inline" >
                         <SubMenu key="sub1"  title={ <span> <Icon type="mail" /><span>ARTICLE MANAGEMENT</span> </span>}>
                             <Menu.Item key="1">新建文章</Menu.Item>
@@ -127,7 +127,7 @@ class EditArticle extends Component{
                         </SubMenu>
                     </Menu>
                 </Sider>
-                <Content className="article_content">
+                <Content  width="18%" className="article_content">
                      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
                         <Form.Item label="title"><Input placeholder="input the article title ..." onChange={this.articleTitle} value={this.state.articleTitle} style={{width:400}}/></Form.Item>
                         <Form.Item label="category"> <Input placeholder="select the article type ..." value={this.state.articleType} style={{width:200}}/>
@@ -150,7 +150,7 @@ class EditArticle extends Component{
                                 <BraftEditor
                                     value={editorState}
                                     onChange={this.handleChange}
-                                    height={200}
+                                    height={50}
                                 />
                         </Form.Item>
                         <Form.Item {...tailFormItemLayout}><Button type="primary" htmlType="submit"> submit this article </Button> </Form.Item>

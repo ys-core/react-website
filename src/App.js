@@ -10,7 +10,6 @@ function App() {
     <div className="App">
        <Body />
        <Profile />
-       {/* <Profile /> */}
     </div>
   );
 }

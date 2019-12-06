@@ -22,9 +22,8 @@ class LeftBar extends Component{
                 <ul>
                     <li ><Link to="/" style={{'color':'white'}}>主页</Link></li>
                     <li><Link to="/blog" style={{'color':'white'}}>博客</Link></li>
-                    <li><Link to="article" style={{'color':'white'}}>文章</Link></li>
                     <li><Link to="/board" style={{'color':'white'}}>留言</Link></li>
-                    <li><Link to="/login" style={{'color':'white'}}>更多</Link></li>
+                    <li><Link to="/life" style={{'color':'white'}}>生活</Link></li>
                     <li><Link to="/" style={{'color':'white'}}>返回</Link></li>
                 </ul>
                 </div>
@@ -43,7 +42,9 @@ class CommentItem extends Component{
           action: null,
       };
     }
-    
+    componentWillReceiveProps(){
+
+    }
     like = () => {
         // console.log(this.state._id)
         const { _id, likes} = this.state
@@ -189,7 +190,8 @@ class Board extends Component{
                     // console.log(res.data.comments)
                     this.setState({
                       comment: '',
-                      allcomments : [res.data.comments[0], ...this.state.allcomments]
+                      // allcomments : [res.data.comments[0], ...this.state.allcomments]
+                      allcomments: [...res.data.comments]
                     })
                      }
                 }).catch(err => {
@@ -246,12 +248,14 @@ class Board extends Component{
     render(){
      
         const { allcomments } = this.state
+        const commentItemNumber = allcomments.length      // 为每一条comment item设置Key时注意从大到小,否则第一条item的likes,dislikes会加到第二条item上去,因为diff算法受key的影响
+        console.log(commentItemNumber)
         return(
            <div id="board_warpper">
                <LeftBar />
                <div className="textArea">
                     <TextArea rows={10} defaultValue={this.state.comment} onChange={this.handleInputEvent.bind(this)} /><br /><br />
-                    <Popconfirm title={this.state.username ? ' 确认留言么? ' : ' 确定匿名留言么? ' }
+                    <Popconfirm title={this.state.username ? ' 确认留言么? ' : ' 确定匿名留言么? ' }s
                           onConfirm={ this.comment }
                           onCancel={ this.cancelComment }
                           okText="确定"
@@ -264,7 +268,7 @@ class Board extends Component{
                
                 <div className="comment">
                 {allcomments.map((item,index) => {
-                        return <CommentItem comment={item} key={index} storey={index}/>
+                        return <CommentItem comment={item} key={commentItemNumber-index} storey={index}/>
                 })}
                 </div>
                 { this.state.loading_footer && <FooterNamePlate />}

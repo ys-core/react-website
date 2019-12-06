@@ -22,7 +22,7 @@ router.post('/add_admin',(req,res)=>{
 			console.log(err);
 			res.send({status:'false'});
 		}
-		console.log('save admin in admins collection successfully')
+		// console.log('save admin in admins collection successfully')
 		res.send({status:'true'});
 	});
 });
@@ -45,7 +45,7 @@ router.post('/add_user',(req,res)=>{
 			res.send({status:'false'});
 			return;
 		}
-		console.log('save user in users collection successfully')
+		// console.log('save user in users collection successfully')
 		res.send({status:'true'});
 	});
 });

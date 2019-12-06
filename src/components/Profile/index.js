@@ -1,10 +1,10 @@
 
 import React from 'react'
 
-import '../css/profile.css'
-import '../css/animate.css'
+import './profile.css'
+import '../../css/animate.css'
 
-import logo from '../svg/logo.svg'
+import logo from '../../svg/logo.svg'
 
 
 
@@ -45,7 +45,7 @@ class Clock extends React.Component {
 function Info() {
   return (
     <div className="detailed_info animated slideInLeft">
-         <strong>Profile Info</strong><br/><br/><hr/>
+         <strong>个人信息</strong><br/><br/><hr/>
          <p>Caden, 男, 25岁, 身高182cm, 2017年毕业于某211院校信息与计算科学专业, 因想早点混社会, 最后发现社会水也深。现实的不如意, 更让如今菜鸟的我开始急于开发如下技能包, but在转往fullstack的路上身心疲惫, 未来将专注前端, 望早日实现财政自由:</p>
          
          <ul>

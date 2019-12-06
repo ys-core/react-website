@@ -12,7 +12,7 @@ import EditArticle from '../components/editArticle'
 import ArticleContent from '../components/articleContent'
 import Notfound from '../components/notfound'
 // import Test from '../components/Test'
-// import Life from '../components/life'
+import Life from '../components/life'
 import Demo from '../components/demo'
 import CommitSuccess from '../components/commitSuccess'
 
@@ -30,7 +30,7 @@ const router = (
             <Route exact path="/article" component={EditArticle}></Route>
             <Route exact path="/article/:index" component={ArticleContent}></Route>
             <Route exact path="/board" component={Board}></Route>
-            {/* <Route exact path="/life" component={Life}></Route> */}
+            <Route exact path="/life" component={Life}></Route>
             <Route exact path="/more" component={Profile}></Route>
             <Route exact path="/account/login" component={LoginPanel}></Route>
             <Route exact path="/account/registration" component={RegisterPanel}></Route>

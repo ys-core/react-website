@@ -8,4 +8,23 @@
     overflow: auto;
     margin-bottom: 6rem;
 }
-
+#navitem{
+    height: 100vh;
+    width: 12%;
+    background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#navitem > ul li{
+    list-style-type: none;
+    line-height: 2rem; 
+    text-align: center;
+}
+#navitem > ul > li:hover{
+    cursor: pointer;
+}

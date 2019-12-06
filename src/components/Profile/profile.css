@@ -6,15 +6,14 @@
 }
 
 .profile_container{
-    width: 27%;
+    width: 25%;
     height: 100vh;
     /* font-size: calc(2px + 1vh); */
     font-size: 0.5rem;
-    /* background: rgb(0,0,0); */
+    background: rgb(0,0,0);
     /* color: blue; */
-    /* color: white; */
     position: fixed;
-    /* border-right: 1px solid #4b5d88; */
+    border-right: 1px dashed black;
 }
 
 .profile{
