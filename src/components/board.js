@@ -159,8 +159,10 @@ class Board extends Component{
         }).catch(err => {
             console.log(err)
         })
-
-        
+ 
+    }
+    componentWillUnmount(){
+       
     }
     handleInputEvent = e => {
         // console.log(e.target.value)

@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import './profile.css'
+// import './profile.css'
 import '../../css/animate.css'
 
 import logo from '../../svg/logo.svg'

@@ -32,3 +32,4 @@ subType.prototype.sayAge = function(){
 inherit(subType,superType)
 
 var instance = new subType('Yang',26);
+

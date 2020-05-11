@@ -4,9 +4,10 @@ import React from 'react'
 import '../css/profile.css'
 import '../css/animate.css'
 
-import logo from '../svg/logo.svg'
+// import logo from '../svg/logo.svg'
 
 
+import logo from '../image/songshu.svg'
 
 function FormattedDate(props) {
   let day = ["Sun","Mon","Que","Wen","Thur","Fri","Sat"];
@@ -34,7 +35,7 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <img src={logo} className="logo" alt="src" />
+        <img src={logo} className="logo" alt="src" width="50%" />
         <FormattedDate date={this.state.date} />
       </div>
     );

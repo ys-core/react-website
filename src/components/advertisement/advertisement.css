@@ -1,0 +1,8 @@
+
+#advertisement{
+    height: 100vh;
+    width: 18%;
+    position: fixed;
+    left: 24%;
+    background: rgba(175, 110, 184,0.2);
+}

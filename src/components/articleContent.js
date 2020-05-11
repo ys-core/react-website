@@ -59,19 +59,19 @@ class ArticleContent extends Component{
                     </div>
             </Sider>
         <Layout>
-            <Content style={{ marginRight: '50px', marginLeft: '2%', background: '#fff', marginTop: '2rem',minHeight: 380 }}>
+            <Content style={{ marginLeft: '6%',marginRight:'5%', background: '#fff', marginTop: '1rem',minHeight: 380 }}>
             <div className="article_warpper">
             {/* {this.props.match.params.index} {this.props.location.state.views} */}
                 <Row>
                     <Col span={22} offset={1}>
                             <Title style={{paddingTop:'3rem',paddingBottom:'2rem'}} level={2}>{ articleTitle }</Title>
                             <Divider dashed orientation="left">
-                            <Text style={{marginLeft:'1rem',fontSize:'0.7rem'}}>Publisher: {author}</Text>
-                            <Text style={{marginLeft:'0.5rem',fontSize:'0.7rem'}}>Date: {createDate}</Text>
-                            <Text style={{marginLeft:'1rem',fontSize:'0.7rem'}}>Views: {views || 0}</Text>
+                            <Text style={{marginLeft:'1rem',fontFamily:'Arial',fontSize:'0.7rem'}}>作者: {author}</Text>
+                            <Text style={{marginLeft:'0.5rem',fontFamily:'Arial',fontSize:'0.7rem'}}>日期: {createDate}</Text>
+                            <Text style={{marginLeft:'1rem',fontFamily:'Arial',fontSize:'0.7rem'}}>阅读: {views || 0}</Text>
                             </Divider>
                             <Divider></Divider>
-                            <div className="article_content" dangerouslySetInnerHTML = {{ __html: content}}>
+                            <div className="article_content" style={{fontFamily:'Arial'}} dangerouslySetInnerHTML = {{ __html: content}}>
                             </div> 
                             <Divider></Divider>
                             <CommentPanel />

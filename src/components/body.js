@@ -26,13 +26,13 @@ class ArticleItem extends Component{
                    <Row> 
                        <Col span={20} offset={1}>
                            <Title level={3} style={{"marginLeft":"0.5em"}}>{article.articleTitle}</Title>
-                           <Text type="primary"  className="article_property" style={{"marginLeft":"2em","marginBottom":"2em","fontSize":"0.65rem"}} >author: {article.author}</Text>
-                           <Text type="primary" className="article_property" style={{"marginLeft":"2em","marginBottom":"2em","fontSize":"0.65rem"}} >createDate: {article.createDate.substring(0,10).replace(/-/g,"/")}</Text>
-                           <Text type="secondary" className="article_property" style={{"marginLeft":"2em","marginBottom":"2em","fontSize":"0.65rem"}} >category: {article.articleType || 'Null'}</Text><br/>
+                           <Text type="primary"  className="article_property" style={{"marginLeft":"2em","marginBottom":"2em","fontSize":"0.65rem",fontFamily:'Calibri,Arial'}} >author: {article.author}</Text>
+                           <Text type="primary" className="article_property" style={{"marginLeft":"2em","marginBottom":"2em","fontSize":"0.65rem",fontFamily:'Calibri,Arial'}} >createDate: {article.createDate.substring(0,10).replace(/-/g,"/")}</Text>
+                           <Text type="secondary" className="article_property" style={{"marginLeft":"2em","marginBottom":"2em","fontSize":"0.65rem",fontFamily:'Calibri,Arial'}} >category: {article.articleType || 'Null'}</Text><br/>
                            {/* <Paragraph ellipsis={{ rows:3, expandable: true }} style={{"textIndent":"2em","lineHeight":"28px"}}>{article.content}</Paragraph> */}
                            {/* <div className="article_body_warpper" key={article._id} dangerouslySetInnerHTML = {{ __html: article.content }}></div> */}
                            <Link to={{ pathname: '/article/'+article._id, state: { views:article.views || 0 }}}>
-                              <div className="article_body_warpper" key={article._id} dangerouslySetInnerHTML = {{ __html: article.content }}></div>
+                              <div className="article_body_warpper" style={{fontFamily:'Arial'}} key={article._id} dangerouslySetInnerHTML = {{ __html: article.content }}></div>
                            </Link>
                            <Divider></Divider>
                        </Col>
@@ -97,6 +97,21 @@ class Body extends Component{
         console.log("login status is ", this.state.login_status)
         // console.log(this.state.allArticles)
         window.addEventListener('scroll', this.handleScrollEvent.bind(this))
+
+		var header_line = document.getElementsByClassName('header_line')[0] 
+        var i=0
+        var width = document.body.clientWidth || window.innerWidth
+        // console.log(width*0.6)
+		var timer=setInterval(function(){
+			i++
+			if(i == Math.round(width*0.5/10)*10){
+                clearInterval(timer)
+                header_line.style.height= "8px"
+			}
+            header_line.style.width=i+"px"
+            
+		},10)
+			
         
     }
     componentWillUnmount(){
@@ -145,6 +160,7 @@ class Body extends Component{
                <div className="avatar"><img  src={this.state.avatar_color} onClick={this.handleClickAvatarEvent.bind(this)} alt=""/></div>
                <div className="header_container animated slideInDown" ref="home_header" >
                     <div className="header">
+                        <div className="header_line"></div>
                         <div className="category_bar">
                           <ul>
                             <li className="default_homepage"><Link to="/"  style={{'color':'black'}}>HOMEPAGE</Link></li>
