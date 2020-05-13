@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
@@ -106,3 +107,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 store the codes for my own blog 
 >>>>>>> b4b0c0e4330cc3f5e27f22019b6925e927d8800b
 >>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
+=======
+# react-website
+This repository share codes of my personal blog
+>>>>>>> a6e22842e3e9a2ca1a4e7be23d1c6d8faf451a3f
