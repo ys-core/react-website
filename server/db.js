@@ -1,5 +1,9 @@
 const mongoose =  require('mongoose');
+<<<<<<< HEAD
 mongoose.connect('mongodb://127.0.0.1:27017/React', { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true });
+=======
+mongoose.connect('mongodb://127.0.0.1:27017/React');
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 
 const db = mongoose.connection;
 db.once('error',()=>console.log('mongo connection error'));
@@ -28,22 +32,33 @@ const userSchema = mongoose.Schema({
 	email: String,
 	tag: Number       // 0--->ordinary usre
 },{
+<<<<<<< HEAD
     collection:'users'
+=======
+   collection:'users'
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 });
 /*
    the schema for all comments on article or comment board,  in /React/comments collection
 */
 const commentSchema = mongoose.Schema({
+<<<<<<< HEAD
 	username: String,
 	avatar: String,
 	commentDate: Date,
 	comment: String,
 	likes: Number,
 	dislikes: Number
+=======
+	     comment: String,
+         username: String,
+         commentTime: Date
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 },{
 	collection:'comments'
 });
 /*
+<<<<<<< HEAD
    the schema for all articles or logs which contains their own comments,  in /React/articles collection
 */
 const articleSchema = mongoose.Schema({    
@@ -54,16 +69,34 @@ const articleSchema = mongoose.Schema({
 	createDate: Date,
 	starsNum: Number,
 	views: Number
+=======
+   the schema for all articles or logs ,  in /React/articles collection
+*/
+const articleSchema = mongoose.Schema({                  
+	content: String,
+	author: String,
+	category: String,
+	createDate: Date,
+	starstNum: Number,
+
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 },{
     collection:'articles'
 });
 
 
 const Models = {
+<<<<<<< HEAD
 	Admin: mongoose.model('admins',adminSchema),   //NAME,SCHEMA,[COLLECTION_NAME]
 	User: mongoose.model('users',userSchema),   //NAME,SCHEMA,[COLLECTION_NAME]
 	Comment: mongoose.model('board_comments',commentSchema),     
 	Article: mongoose.model('articles',articleSchema)
+=======
+	    Admin: mongoose.model('admins',adminSchema),   //NAME,SCHEMA,[COLLECTION_NAME]
+	    User: mongoose.model('users',userSchema),   //NAME,SCHEMA,[COLLECTION_NAME]
+		Comments: mongoose.model('board_comments',commentSchema),
+		Articles: mongoose.model('articles',articleSchema)
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 }
 
 module.exports = Models;

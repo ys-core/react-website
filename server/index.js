@@ -9,6 +9,7 @@ const app = new express();
          
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+<<<<<<< HEAD
 
 // Add headers
 app.use(function (req, res, next) {
@@ -30,15 +31,29 @@ app.use(function (req, res, next) {
     next();
 });
 
+=======
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 app.use(api);
 
 app.use(express.static(path.resolve(__dirname,'../dist')));
 
+<<<<<<< HEAD
 
 app.use((req,res,next)=>{
 	next();
 })
 
+=======
+app.use((req,res,next)=>{
+	next();
+})
+app.get('*',function(rep,res){
+/*
+	const html =  fs.readFileSync(path.resolve(__dirname,'../dist/index.html','utf-8'));
+	res.send(html);
+*/
+});
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 
 app.listen(8088,function(){
 	console.log('server listening at port 8088');

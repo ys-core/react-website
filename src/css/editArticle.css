@@ -1,9 +1,18 @@
 
+<<<<<<< HEAD
 .article_sider{
     /* height: 100vh; */
+=======
+.article_sider, .article_content{
+    height: 100vh;
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 }
 
 .article_content{
     /* background: red; */
+<<<<<<< HEAD
     /* width: 50%; */
+=======
+    width: 100%;
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 }

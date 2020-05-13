@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Typography, Col, Row, Button, Divider, Layout } from 'antd'
@@ -13,10 +14,15 @@ const { Text, Title} = Typography
 const { Sider,Content } = Layout
 
 
+=======
+
+import '../css/articleContent.css'
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 
 class ArticleContent extends Component{
     constructor(props){
         super(props)
+<<<<<<< HEAD
         this.state = {
             _id: props.match.params.index,
             views: this.props.location.state.views,
@@ -84,6 +90,14 @@ class ArticleContent extends Component{
             { this.state.loading_footer && <FooterNamePlate />}
         </Layout>
         </Layout>
+=======
+    }
+    render(){
+        return(
+            <div>{this.props.match.params.index}
+              <p>{this.props.location.search}</p>
+            </div>
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
         )
     }
 

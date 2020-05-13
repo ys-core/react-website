@@ -1,6 +1,7 @@
 
 
 import React from 'react'
+<<<<<<< HEAD
 import  { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import '../css/index.css';
@@ -42,3 +43,18 @@ const router = (
 )
 
 export default router
+=======
+import  {BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import Home from '../App'
+
+const MyRoutes = () => {
+    <BrowserRouter>
+       <Switch>
+           <Route exact path="/home" component={Home}></Route>
+       </Switch>
+    </BrowserRouter>
+}
+
+export default MyRoutes
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a

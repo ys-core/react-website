@@ -4,6 +4,7 @@
     get:
 
 	   /getAllArticles						// get all the articles from database
+<<<<<<< HEAD
 	   /getOneArticle/:_id                  // obtain the specific artilce by _Id 
 	   /getArticles/:_category              // obtain articles which have specified catogory.
 
@@ -13,6 +14,13 @@
 	   /deleteArticle                       // admin to delete one article
 	   /deleteBoardComment                  // admin to delete one board comment
        
+=======
+	   /getAllBoardComments					// get all the comments from database
+	   /deleteArticle                       // admin to delete one article
+	   /deleteBoardComment                  // admin to delete one board comment
+
+
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 
 
 
@@ -21,6 +29,7 @@
 		 /add_admin                             // register new administrator
 	     /verify_admin                          //  verify admin for login, return true or false
 		 /verify_user							// verify the common user, return true or false
+<<<<<<< HEAD
 		 /add_article                           // create an new article and add it to articles collection
 		 /update_views/:_id                     // update the the views of a specific article.
 		 /add_board_comment                          // add user's board comment into comments collection
@@ -33,6 +42,14 @@
 		 /user_center
 		 /forget_password							
 		 <!-- /commitComment							// commit the user's comment to database, reuturn true or false -->
+=======
+		 
+		 /article/:index						// post the new created article to the database, return true or false
+		 /admini_center
+		 /user_center
+		 /forget_password							
+		 /commitComment							// commit the user's comment to database, reuturn true or false
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 		 
 
 

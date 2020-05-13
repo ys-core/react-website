@@ -10,20 +10,36 @@ const email = require('./163email');
 router.post('/add_admin',(req,res)=>{
 	let md5 = crypto.createHash("md5");
 	let newCryptoedPassword = md5.update(req.body.password).digest("hex");
+<<<<<<< HEAD
 	let newAdmin = new models.Admin({
+=======
+	let newAccount = new models.Admin({
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 		username: req.body.username,
 		password: newCryptoedPassword,
         gender: req.body.gender,
 		email: req.body.email,
 		tag: req.body.tag
 	});
+<<<<<<< HEAD
 	newAdmin.save((err)=>{
+=======
+
+	newAccount.save((err,data)=>{
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 		if(err){
 			console.log(err);
 			res.send({status:'false'});
 		}
+<<<<<<< HEAD
 		// console.log('save admin in admins collection successfully')
 		res.send({status:'true'});
+=======
+		else{
+            console.log('save user in Mongodb Database successfully')
+			res.send({status:'true'});
+		}
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 	});
 });
 /*
@@ -32,13 +48,18 @@ router.post('/add_admin',(req,res)=>{
 router.post('/add_user',(req,res)=>{
 	let md5 = crypto.createHash("md5");
 	let newCryptoedPassword = md5.update(req.body.password).digest("hex");
+<<<<<<< HEAD
 	let newUser = new models.User({
+=======
+	let newAccount = new models.User({
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 		username: req.body.username,
 		password: newCryptoedPassword,
 		gender: req.body.gender,
 		email: req.body.email,
 		tag: req.body.tag
 	});
+<<<<<<< HEAD
 	newUser.save((err)=>{
 		if(err){
 			console.log(err);
@@ -47,6 +68,18 @@ router.post('/add_user',(req,res)=>{
 		}
 		// console.log('save user in users collection successfully')
 		res.send({status:'true'});
+=======
+
+	newAccount.save((err,data)=>{
+		if(err){
+			console.log(err);
+			res.send({status:'false'});
+		}
+		else{
+			console.log('save user in Mongodb Database successfully')
+			res.send({status:'true'});
+		}
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 	});
 });
 /*
@@ -108,6 +141,10 @@ router.post('/verify_user',(req,res)=>{
 			res.send(err);
 		}
 		else{
+<<<<<<< HEAD
+=======
+	
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 			let md5 = crypto.createHash("md5");
 			let newCryptoedPassword = md5.update(req.body.password).digest("hex");
 			console.log(data.length);
@@ -119,6 +156,10 @@ router.post('/verify_user',(req,res)=>{
 						break;   // when i=data.length-1 and then break,i would not execute ++
 					}
 				}
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 				if(i < data.length){
 					res.send({status:'true',tag:data[i].tag,username:data[i].username})        //common user's username and password matched
 				}else{
@@ -143,6 +184,7 @@ router.post('/verify_user',(req,res)=>{
 		}
 	})
 });
+<<<<<<< HEAD
 /*
 	create an article and add it to /React/articles collection
 */
@@ -226,6 +268,8 @@ router.post('/board/comment_dislikes',(req,res)=>{
 })
 
 
+=======
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 
 
 
@@ -233,6 +277,7 @@ router.post('/board/comment_dislikes',(req,res)=>{
 	get all articles info from /React/articles collection
 */
 router.get('/getAllArticles',(req,res)=>{
+<<<<<<< HEAD
 	models.Article.find((err,data)=>{
 		if(err){
 			console.log("query articles error");
@@ -288,10 +333,22 @@ router.get('/getArticles/:_category',(req,res)=>{
 
 })
 
+=======
+	models.Articles.find((err,data)=>{
+		if(err){
+			console.log("query articles error");
+			res.send({status:'true'});
+		}else{
+			res.send(data);
+		}
+	})
+})
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 /*
 	get all board comments from /React/comments collection
 */
 router.get('/getAllBoardComments',(req,res)=>{
+<<<<<<< HEAD
 	// console.log('hello')
 	models.Comment.find({}).sort({commentDate: -1}).exec((err,data)=>{
 		if(err){
@@ -299,6 +356,14 @@ router.get('/getAllBoardComments',(req,res)=>{
 			res.send({status:'false'});
 		}else{
 			res.send({status: 'true', comments: data});
+=======
+	models.Comments.find((err,data)=>{
+		if(err){
+			console.log("query board comments error");
+			res.send({status:'true'});
+		}else{
+			res.send(data);
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 		}
 	})
 })
@@ -307,7 +372,11 @@ router.get('/getAllBoardComments',(req,res)=>{
 */
 router.get('/deleteArticle',(req,res)=>{
 	let articleID = req.query.articleID;
+<<<<<<< HEAD
 	models.Article.deleteOne({createDate:articleID},(err)=>{
+=======
+	models.Articles.deleteOne({createDate:articleID},(err)=>{
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 		if(err){
 			console.log('delete article action failed');
 			res.send({status:'false'});
@@ -317,7 +386,11 @@ router.get('/deleteArticle',(req,res)=>{
 	})
 })
 /*
+<<<<<<< HEAD
 	delete one board comment from /React/comments collection
+=======
+	delete one comment from /React/comments collection
+>>>>>>> b6fcfa1f62f44ab41c66004ddce4d2f243888b1a
 */
 router.get('/deleteBoardComment',(req,res)=>{
 	let commentID = req.query.commentID;
